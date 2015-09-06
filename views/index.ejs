@@ -1,0 +1,42 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html ng-app="MovieCatalog">
+<head>
+    <meta charset="UTF-8">
+    <title>MEAN Stack</title>
+</head>
+<body ng-controller="MoviesController">
+    <h1>MEAN Stack Hello World</h1>
+
+    <ul ng-repeat="movie in movies">
+        <li><a href="#" ng-click="showMovie(movie)"> {{movie.title}}</a></li>
+    </ul>
+
+	<div ng-if="selectedMovie">
+	    <dl>
+	        <dt>Title</dt>
+	        <td>{{selectedMovie.title}}</td>
+	        <dt>Director</dt>
+	        <td>{{selectedMovie.director}}</td>
+	        <dt>Year</dt>
+	        <td>{{selectedMovie.year}}</td>
+	    </dl>
+	    <a href="#" ng-click="deleteMovie(selectedMovie)">
+            Delete {{selectedMovie.title}}
+        </a>
+        <a href="#" ng-click="editMovie(selectedMovie)">
+            Edit film {{selectedMovie.title}}
+        </a>
+	</div>
+
+  	<form ng-submit="sendMovie()">
+        Title: <input ng-model="movie.title">
+        Director: <input ng-model="movie.director">
+        Year: <input ng-model="movie.year">
+        <input type="submit">
+    </form>
+
+    <script src="javascript/angular.js"></script>
+    <script src="javascript/MoviesController.js"></script>
+</body>
+</html>
